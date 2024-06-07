@@ -1,0 +1,7 @@
+<%= turbo_stream.replace "#{dom_id(@task)}" %>
+
+<% if @task.todo? %>
+  <%= turbo_stream.append 'tasks', partial: 'tasks/task', locals: { task: @task } %>
+<% else %>
+  <%= turbo_stream.prepend 'done-tasks', partial: 'tasks/task', locals: { task: @task } %>
+<% end %>
